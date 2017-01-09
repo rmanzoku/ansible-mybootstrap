@@ -1,0 +1,5 @@
+- name: Clone pyenv
+  git:
+    repo: git@github.com:yyuu/pyenv.git
+    dest: ~/.pyenv
+    version: master
