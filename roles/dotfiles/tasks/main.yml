@@ -3,3 +3,15 @@
     repo: git@github.com:{{ my_github_account }}/dotfiles.git
     dest: ~/dotfiles
     version: master
+
+- file:
+    state: link
+    path: "{{ lookup('env','HOME') }}/{{ item }}"
+    src: "{{ lookup('env','HOME') }}/dotfiles/{{ item }}"
+  with_items:
+    - ".share"
+    - ".config"
+    - ".gitconfig"
+    - ".zshrc"
+    - ".zsh.d"
+    - ".ssh/conf.d"
