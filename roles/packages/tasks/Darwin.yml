@@ -1,0 +1,20 @@
+# - name: Change /usr/local owner to "{{ ansible_user_id }}"
+#   become: true
+#   become_method: sudo
+#   file:
+#     dest: /usr/local
+#     owner: "{{ ansible_user_id }}"
+#     group: admin
+#     recurse: yes
+
+- name: Update homebrew
+  homebrew:
+    update_homebrew: yes
+
+- homebrew:
+    state: present
+    name: "{{ item }}"
+    install_options: ""
+  with_items:
+    - jq
+    - wget
