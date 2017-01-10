@@ -5,13 +5,19 @@
     version: master
 
 - file:
+    state: directory
+    path: "{{ lookup('env','HOME') }}/.config"
+
+- file:
     state: link
     path: "{{ lookup('env','HOME') }}/{{ item }}"
     src: "{{ lookup('env','HOME') }}/dotfiles/{{ item }}"
   with_items:
     - ".share"
-    - ".config"
+    - ".config/flake8"
+    - ".config/pip"
     - ".gitconfig"
     - ".zshrc"
     - ".zsh.d"
     - ".ssh/conf.d"
+    - ".snippets"
