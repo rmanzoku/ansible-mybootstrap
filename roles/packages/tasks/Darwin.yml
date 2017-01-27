@@ -16,5 +16,10 @@
     name: "{{ item }}"
     install_options: ""
   with_items:
+    - coreutils
     - jq
     - wget
+    - shellcheck
+    - peco
+    - packer
+    - ag
