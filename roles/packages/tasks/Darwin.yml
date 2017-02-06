@@ -7,6 +7,11 @@
 #     group: admin
 #     recurse: yes
 
+- name: brew taps
+  homebrew_tap: name={{ item }}
+  with_items:
+    - tidwall/jd  ## for jd
+
 - name: Update homebrew
   homebrew:
     update_homebrew: yes
@@ -23,3 +28,4 @@
     - peco
     - packer
     - ag
+    - jd
