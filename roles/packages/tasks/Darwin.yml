@@ -29,3 +29,9 @@
     - packer
     - ag
     - jd
+
+- homebrew_cask:
+    state: present
+    name: "{{ item }}"
+  with_items:
+    - docker
