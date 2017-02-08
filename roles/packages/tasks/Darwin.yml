@@ -29,6 +29,7 @@
     - packer
     - ag
     - jd
+    - zsh-completions
 
 - homebrew_cask:
     state: present
