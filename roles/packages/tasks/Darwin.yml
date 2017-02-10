@@ -30,6 +30,7 @@
     - ag
     - jd
     - zsh-completions
+    - percona-toolkit # pt-query-digest
 
 - homebrew_cask:
     state: present
