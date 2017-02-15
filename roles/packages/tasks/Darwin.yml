@@ -37,3 +37,4 @@
     name: "{{ item }}"
   with_items:
     - docker
+    - sequel-pro
