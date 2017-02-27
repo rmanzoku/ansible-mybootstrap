@@ -2,4 +2,4 @@
 localhost ansible_connection=local
 
 [localhost:vars]
-my_github_account=mob-manzoku
+my_github_account=rmanzoku
