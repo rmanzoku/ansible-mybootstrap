@@ -13,6 +13,10 @@
     path: "{{ lookup('env','HOME') }}/.bak.emacs"
 
 - file:
+    state: directory
+    path: "{{ lookup('env','HOME') }}/.emacs.d"
+
+- file:
     state: link
     path: "{{ lookup('env','HOME') }}/{{ item }}"
     src: "{{ lookup('env','HOME') }}/dotfiles/{{ item }}"
@@ -25,3 +29,5 @@
     - ".zsh.d"
     - ".ssh/conf.d"
     - ".snippets"
+    - ".emacs.d/init.el"
+    
