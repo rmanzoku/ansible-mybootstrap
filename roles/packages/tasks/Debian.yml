@@ -2,6 +2,7 @@
   with_items:
     - shellcheck
     - silversearcher-ag
+    - emacs
   become: true
 
 - set_fact:
