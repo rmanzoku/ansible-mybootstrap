@@ -1,0 +1,20 @@
+- apt: name={{ item }} state=present
+  with_items:
+    - shellcheck
+    - silversearcher-ag
+  become: true
+
+- set_fact:
+    from_url:
+      - url: https://github.com/peco/peco/releases/download/v0.4.9/peco_linux_amd64.tar.gz
+        dir: peco_linux_amd64
+        bin: peco
+      - url: https://github.com/github/hub/releases/download/v2.2.9/hub-linux-amd64-2.2.9.tgz
+        dir: hub-linux-amd64-2.2.9/bin
+        bin: hub
+
+- unarchive: src={{ item.url }} dest="{{ lookup('env','HOME') }}/usr/local" remote_src=yes
+  with_items: "{{ from_url }}"
+
+- file: state=link src="{{ lookup('env','HOME') }}/usr/local/{{ item.dir }}/{{ item.bin }}" dest="{{ lookup('env','HOME') }}/usr/local/bin/{{ item.bin }}"
+  with_items: "{{ from_url }}"
