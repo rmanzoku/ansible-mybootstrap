@@ -30,4 +30,4 @@
     - ".ssh/conf.d"
     - ".snippets"
     - ".emacs.d/init.el"
-    
+    - ".screenrc"
