@@ -35,7 +35,15 @@
 
 - homebrew_cask:
     state: present
+    name: "{{ item.name }}"
+    install_options: "{{ item.option }}"
+  with_items:
+    - { name: firefox, option: "--language=ja" }
+
+- homebrew_cask:
+    state: present
     name: "{{ item }}"
   with_items:
     - docker
     - sequel-pro
+    # - google-chrome
