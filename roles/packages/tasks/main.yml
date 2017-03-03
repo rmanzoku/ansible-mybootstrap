@@ -3,3 +3,9 @@
 - file: path="{{ lookup('env','HOME') }}/usr/local/bin" state=directory
 
 - include: "{{ ansible_os_family }}.yml"
+
+- name: Clone dotfiles
+  git:
+    repo: git@github.com:{{ my_github_account }}/scripts.git
+    dest: "{{ lookup('env','HOME') }}/scripts"
+    version: master
