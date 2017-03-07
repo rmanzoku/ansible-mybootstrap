@@ -22,6 +22,7 @@
     install_options: ""
   with_items:
     - coreutils
+    - q
     - jq
     - wget
     - shellcheck
@@ -46,4 +47,5 @@
   with_items:
     - docker
     - sequel-pro
+    - iterm2
     # - google-chrome
