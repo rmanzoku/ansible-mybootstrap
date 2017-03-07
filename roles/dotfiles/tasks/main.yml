@@ -31,3 +31,4 @@
     - ".snippets"
     - ".emacs.d/init.el"
     - ".screenrc"
+    - ".dircolors"
