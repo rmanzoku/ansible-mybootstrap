@@ -13,6 +13,9 @@
       - url: https://github.com/github/hub/releases/download/v2.2.9/hub-linux-amd64-2.2.9.tgz
         dir: hub-linux-amd64-2.2.9/bin
         bin: hub
+      - url: https://github.com/tidwall/jd/releases/download/0.3.1/jd-0.3.1-linux-amd64.tar.gz
+        dir: jd-0.3.1-linux-amd64
+        bin: jd
 
 - unarchive: src={{ item.url }} dest="{{ lookup('env','HOME') }}/usr/local" remote_src=yes
   with_items: "{{ from_url }}"
