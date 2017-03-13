@@ -49,3 +49,8 @@
     - sequel-pro
     - iterm2
     # - google-chrome
+
+- file:
+    state: link
+    src: /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport
+    dest: "{{ lookup('env','HOME') }}/usr/local/bin/airport"
