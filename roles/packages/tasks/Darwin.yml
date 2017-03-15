@@ -27,6 +27,8 @@
     - skype
     - kindle
     - boostnote
+    - wireshark
+    - tunnelblick
 
 - homebrew:
     state: present
