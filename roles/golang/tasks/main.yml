@@ -1,0 +1,10 @@
+- set_fact:
+    GO_VERSION: 1.8
+
+- set_fact:
+    url: "https://storage.googleapis.com/golang/go{{ GO_VERSION }}.linux-amd64.tar.gz"
+  when: ansible_os_family == "Debian"
+
+- name: Install from {{ url }}
+  unarchive: src={{ url }} dest="{{ lookup('env','HOME') }}/usr/local" remote_src=yes
+  when: ansible_os_family == "Debian"
