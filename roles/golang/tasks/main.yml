@@ -8,3 +8,9 @@
 - name: Install from {{ url }}
   unarchive: src={{ url }} dest="{{ lookup('env','HOME') }}/usr/local" remote_src=yes
   when: ansible_os_family == "Debian"
+
+- homebrew: name=go state=present
+  when: ansible_os_family == "Darwin"
+
+- file: state=link src=/usr/local/opt/go/libexec dest="{{ lookup('env','HOME') }}/usr/local/go"
+  when: ansible_os_family == "Darwin"
