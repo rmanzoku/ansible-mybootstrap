@@ -16,6 +16,18 @@
   homebrew:
     update_homebrew: yes
 
+- homebrew_cask:
+    state: present
+    name: "{{ item }}"
+  with_items:
+    - google-chrome
+    - iterm2
+    - docker
+    - sequel-pro
+    - skype
+    - kindle
+    - boostnote
+
 - homebrew:
     state: present
     name: "{{ item }}"
@@ -40,16 +52,6 @@
     install_options: "{{ item.option }}"
   with_items:
     - { name: firefox, option: "--language=ja" }
-
-- homebrew_cask:
-    state: present
-    name: "{{ item }}"
-  with_items:
-    - docker
-    - sequel-pro
-    - iterm2
-    - skype
-    # - google-chrome
 
 - file:
     state: link
