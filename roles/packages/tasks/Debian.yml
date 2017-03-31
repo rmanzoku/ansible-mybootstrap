@@ -8,17 +8,28 @@
 - set_fact:
     from_url:
       - url: https://github.com/peco/peco/releases/download/v0.5.1/peco_linux_amd64.tar.gz
-        dir: peco_linux_amd64
+        src: peco_linux_amd64/peco
         bin: peco
       - url: https://github.com/github/hub/releases/download/v2.2.9/hub-linux-amd64-2.2.9.tgz
-        dir: hub-linux-amd64-2.2.9/bin
+        src: hub-linux-amd64-2.2.9/bin/hub
         bin: hub
       - url: https://github.com/tidwall/jd/releases/download/0.3.1/jd-0.3.1-linux-amd64.tar.gz
-        dir: jd-0.3.1-linux-amd64
+        src: jd-0.3.1-linux-amd64/jd
         bin: jd
+      - url: https://github.com/direnv/direnv/releases/download/v2.11.3/direnv.linux-amd64
+        src: direnv.linux-amd64
+        bin: direnv
+        archived: false
+
 
 - unarchive: src={{ item.url }} dest="{{ lookup('env','HOME') }}/usr/local" remote_src=yes
+  when: (item.archived is undefined) or (item.archived)
   with_items: "{{ from_url }}"
 
-- file: state=link src="{{ lookup('env','HOME') }}/usr/local/{{ item.dir }}/{{ item.bin }}" dest="{{ lookup('env','HOME') }}/usr/local/bin/{{ item.bin }}"
+- file: state=link src="{{ lookup('env','HOME') }}/usr/local/{{ item.src }}" dest="{{ lookup('env','HOME') }}/usr/local/bin/{{ item.bin }}"
+  when: (item.archived is undefined) or (item.archived)
+  with_items: "{{ from_url }}"
+
+- get_url: url={{ item.url }} dest="{{ lookup('env','HOME') }}/usr/local/bin/{{ item.bin }}" remote_src=yes mode=0755
+  when: (item.archived is defined) and (not item.archived)
   with_items: "{{ from_url }}"
