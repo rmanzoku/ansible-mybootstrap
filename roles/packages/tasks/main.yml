@@ -7,5 +7,5 @@
 - name: Clone scripts
   git:
     repo: git@github.com:{{ my_github_account }}/scripts.git
-    dest: "{{ lookup('env','HOME') }}/scripts"
+    dest: "{{ lookup('env','HOME') }}/src/github.com/{{ my_github_account }}/scripts"
     version: master

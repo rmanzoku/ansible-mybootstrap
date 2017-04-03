@@ -47,6 +47,7 @@
     - zsh-completions
     - percona-toolkit # pt-query-digest
     - emacs
+    - ghq
 
 - homebrew_cask:
     state: present

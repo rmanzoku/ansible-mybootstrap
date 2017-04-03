@@ -20,6 +20,9 @@
         src: direnv.linux-amd64
         bin: direnv
         archived: false
+      - url: https://github.com/motemen/ghq/releases/download/v0.7.4/ghq_linux_amd64.zip
+        src: ghq
+        bin: ghq
 
 
 - unarchive: src={{ item.url }} dest="{{ lookup('env','HOME') }}/usr/local" remote_src=yes
