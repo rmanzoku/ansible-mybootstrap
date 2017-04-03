@@ -44,7 +44,6 @@
     - packer
     - ag
     - jd
-    - zsh-completions
     - percona-toolkit # pt-query-digest
     - emacs
     - ghq

@@ -1,7 +1,7 @@
 - name: Clone dotfiles
   git:
     repo: git@github.com:{{ my_github_account }}/dotfiles.git
-    dest: "{{ lookup('env','HOME') }}/dotfiles"
+    dest: "{{ lookup('env','HOME') }}/src/github.com/{{ my_github_account }}/dotfiles"
     version: master
 
 - file:
@@ -19,7 +19,7 @@
 - file:
     state: link
     path: "{{ lookup('env','HOME') }}/{{ item }}"
-    src: "{{ lookup('env','HOME') }}/dotfiles/{{ item }}"
+    src: "{{ lookup('env','HOME') }}/src/github.com/{{ my_github_account }}/dotfiles/{{ item }}"
   with_items:
     - ".share"
     - ".config/flake8"
@@ -32,3 +32,10 @@
     - ".emacs.d/init.el"
     - ".screenrc"
     - ".dircolors"
+
+
+- name: Clone zsh-completions
+  git:
+    repo: git@github.com:zsh-users/zsh-completions.git
+    dest: "{{ lookup('env','HOME') }}/src/github.com/zsh-users/zsh-completions"
+    version: master
