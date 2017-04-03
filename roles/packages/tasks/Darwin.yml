@@ -47,6 +47,7 @@
     - percona-toolkit # pt-query-digest
     - emacs
     - ghq
+    - direnv
 
 - homebrew_cask:
     state: present
