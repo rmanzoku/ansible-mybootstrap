@@ -23,6 +23,9 @@
       - url: https://github.com/motemen/ghq/releases/download/v0.7.4/ghq_linux_amd64.zip
         src: ghq
         bin: ghq
+      - url: https://github.com/y13i/j2y/releases/download/v0.0.8/j2y-linux_amd64.zip
+        src: j2y
+        bin: j2y
 
 
 - unarchive: src={{ item.url }} dest="{{ lookup('env','HOME') }}/usr/local" remote_src=yes
