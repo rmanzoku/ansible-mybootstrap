@@ -34,9 +34,12 @@
     - ".dircolors"
     - ".my.cnf"
 
+- file:
+    state: directory
+    path: "{{ lookup('env','HOME') }}/usr/local/zsh/"
 
 - name: Clone zsh-completions
   git:
     repo: git@github.com:zsh-users/zsh-completions.git
-    dest: "{{ lookup('env','HOME') }}/src/github.com/zsh-users/zsh-completions"
+    dest: "{{ lookup('env','HOME') }}/usr/local/zsh/zsh-completions"
     version: master
