@@ -14,3 +14,11 @@
 
 - file: state=link src=/usr/local/opt/go/libexec dest="{{ lookup('env','HOME') }}/usr/local/go"
   when: ansible_os_family == "Darwin"
+
+- name: go get
+  shell: go get {{ item }}
+  environment:
+    GOPATH: "{{ lookup('env','HOME') }}/usr/local"
+  with_items:
+    - golang.org/x/tools/cmd/goimports
+    - github.com/golang/lint/golint
