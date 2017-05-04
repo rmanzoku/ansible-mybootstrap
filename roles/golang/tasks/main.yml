@@ -22,3 +22,4 @@
   with_items:
     - golang.org/x/tools/cmd/goimports
     - github.com/golang/lint/golint
+    - github.com/nsf/gocode
