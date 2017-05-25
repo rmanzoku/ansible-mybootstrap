@@ -31,3 +31,5 @@
     - eslint
     - eslint-plugin-import
     - eslint-config-airbnb-base
+    - npm-check-updates
+
