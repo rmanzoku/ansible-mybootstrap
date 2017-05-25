@@ -21,7 +21,7 @@
 
 - name: npm install dev commands
   npm:
-    executable: "{{ lookup('env','HOME') }}/usr/local/node/bin/npm"
+    executable: "{{ lookup('env','HOME') }}/usr/local/node/bin/node {{ lookup('env','HOME') }}/usr/local/node/bin/npm"
     production: yes
     global: no
     name: "{{ item }}"
