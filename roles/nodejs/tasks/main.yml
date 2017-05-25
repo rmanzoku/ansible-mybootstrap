@@ -1,0 +1,39 @@
+- set_fact:
+    NODE_VERSION: 6.10.3
+
+- set_fact:
+    name: "node-v{{ NODE_VERSION }}-linux-x64"
+  when: ansible_os_family == "Debian"
+
+- set_fact:
+    name: "node-v{{ NODE_VERSION }}-darwin-x64"
+  when: ansible_os_family == "Darwin"
+
+- set_fact:
+    url: "http://nodejs.org/dist/v{{ NODE_VERSION }}/{{ name }}.tar.gz"
+
+- name: Install from {{ url }}
+  unarchive: src={{ url }} dest="{{ lookup('env','HOME') }}/usr/local" remote_src=yes
+  register: result
+
+- name: Set link "{{ lookup('env','HOME') }}/usr/local/node" -> "{{ lookup('env','HOME') }}/usr/local/{{ name }}"
+  file: state=link src="{{ lookup('env','HOME') }}/usr/local/{{ name }}" dest="{{ lookup('env','HOME') }}/usr/local/node"
+
+- name: npm install dev commands
+  npm:
+    executable: "{{ lookup('env','HOME') }}/usr/local/node/bin/npm"
+    production: yes
+    global: no
+    name: "{{ item }}"
+    state: present
+    path: "{{ lookup('env','HOME') }}/usr/local"
+  with_items:
+    - eslint
+# - name: go get
+#   shell: go get {{ item }}
+#   environment:
+#     GOPATH: "{{ lookup('env','HOME') }}/usr/local"
+#   with_items:
+#     - golang.org/x/tools/cmd/goimports
+#     - github.com/golang/lint/golint
+#     - github.com/nsf/gocode
