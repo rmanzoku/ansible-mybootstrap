@@ -48,6 +48,7 @@
     - emacs
     - ghq
     - direnv
+    - gnu-tar
 
 - homebrew_cask:
     state: present
@@ -58,5 +59,10 @@
 
 - file:
     state: link
-    src: /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport
-    dest: "{{ lookup('env','HOME') }}/usr/local/bin/airport"
+    src: "{{ item.src }}"
+    dest: "{{ lookup('env','HOME') }}/usr/local/bin/{{ item.command }}"
+  with_items:
+    - src: /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport
+      command: airport
+    - src: /usr/local/opt/gnu-tar/libexec/gnubin/tar
+      command: tar
