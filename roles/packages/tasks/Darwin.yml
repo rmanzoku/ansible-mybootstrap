@@ -29,6 +29,7 @@
     - boostnote
     - wireshark
     - tunnelblick
+    - mysqlworkbench
 
 - homebrew:
     state: present
