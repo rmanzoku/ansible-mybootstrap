@@ -3,7 +3,7 @@
   roles:
     - { tags: p, role: packages }
     - { tags: d, role: dotfiles }
-    - { tags: g, role: golang }
+    - { tags: [g,go,golang], role: golang }
     - { tags: node, role: nodejs }
     - python
     - ruby
