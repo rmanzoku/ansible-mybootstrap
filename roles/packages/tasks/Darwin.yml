@@ -30,6 +30,7 @@
     - wireshark
     - tunnelblick
     - mysqlworkbench
+    - medis
 
 - homebrew:
     state: present
