@@ -21,6 +21,7 @@
     name: "{{ item }}"
   with_items:
     - google-chrome
+    - google-japanese-ime
     - iterm2
     - docker
     - sequel-pro
@@ -30,7 +31,8 @@
     - wireshark
     - tunnelblick
     - mysqlworkbench
-    - medis
+    # - medis
+    - slack
 
 - homebrew:
     state: present
@@ -57,7 +59,7 @@
     name: "{{ item.name }}"
     install_options: "{{ item.option }}"
   with_items:
-    - { name: firefox, option: "--language=ja" }
+    - { name: firefox, option: "language=ja" }
 
 - file:
     state: link
