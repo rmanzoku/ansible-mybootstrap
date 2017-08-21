@@ -1,5 +1,5 @@
 - set_fact:
-    NODE_VERSION: 6.11.0
+    NODE_VERSION: 6.11.2
 
 - set_fact:
     name: "node-v{{ NODE_VERSION }}-linux-x64"
