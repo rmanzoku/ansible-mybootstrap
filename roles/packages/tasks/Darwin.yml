@@ -32,7 +32,8 @@
     - tunnelblick
     - mysqlworkbench
     # - medis
-    - slack
+    # - slack
+    # - google-backup-and-sync
 
 - homebrew:
     state: present
