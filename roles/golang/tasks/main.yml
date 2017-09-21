@@ -15,7 +15,7 @@
 - file: state=link src=/usr/local/opt/go/libexec dest="{{ lookup('env','HOME') }}/usr/local/go"
   when: ansible_os_family == "Darwin"
 
-- name: go get
+- name: go get development tool
   shell: go get {{ item }}
   environment:
     GOPATH: "{{ lookup('env','HOME') }}/usr/local"
@@ -25,3 +25,10 @@
     - github.com/nsf/gocode
     - github.com/Masterminds/glide
     - github.com/rogpeppe/godef
+
+- name: go get development tool
+  shell: go get {{ item }}
+  environment:
+    GOPATH: "{{ lookup('env','HOME') }}/usr/local"
+  with_items:
+    - github.com/ariarijp/crontoc
