@@ -2,7 +2,7 @@
 
 - file: path="{{ lookup('env','HOME') }}/usr/local/bin" state=directory
 
-- include: "{{ ansible_os_family }}.yml"
+- include_tasks: "{{ ansible_os_family }}.yml"
 
 - name: Clone scripts
   git:
