@@ -4,19 +4,18 @@
     dest: "{{ lookup('env','HOME') }}/src/github.com/{{ my_github_account }}/dotfiles"
     version: master
 
-- file:
+- name: Make dot directories
+  file:
     state: directory
-    path: "{{ lookup('env','HOME') }}/.config"
+    path: "{{ lookup('env','HOME') }}/{{ item }}"
+  with_items:
+    - .config
+    - .bak.emacs
+    - .emacs.d
+    - .jupyter
 
-- file:
-    state: directory
-    path: "{{ lookup('env','HOME') }}/.bak.emacs"
-
-- file:
-    state: directory
-    path: "{{ lookup('env','HOME') }}/.emacs.d"
-
-- file:
+- name: Create link to dotfile repo
+  file:
     state: link
     path: "{{ lookup('env','HOME') }}/{{ item }}"
     src: "{{ lookup('env','HOME') }}/src/github.com/{{ my_github_account }}/dotfiles/{{ item }}"
@@ -33,8 +32,10 @@
     - ".screenrc"
     - ".dircolors"
     - ".my.cnf"
+    - ".jupyter/jupyter_notebook_config.py"
 
-- file:
+- name: Make dir for zsh setting
+  file:
     state: directory
     path: "{{ lookup('env','HOME') }}/usr/local/zsh/"
 
