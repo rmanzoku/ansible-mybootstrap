@@ -10,8 +10,8 @@
       - url: https://github.com/peco/peco/releases/download/v0.5.1/peco_linux_amd64.tar.gz
         src: peco_linux_amd64/peco
         bin: peco
-      - url: https://github.com/github/hub/releases/download/v2.3.0-pre9/hub-linux-amd64-2.3.0-pre9.tgz
-        src: hub-linux-amd64-2.3.0-pre9/bin/hub
+      - url: https://github.com/github/hub/releases/download/v2.3.0-pre10/hub-linux-amd64-2.3.0-pre10.tgz
+        src: hub-linux-amd64-2.3.0-pre10/bin/hub
         bin: hub
       - url: https://github.com/tidwall/jd/releases/download/0.3.1/jd-0.3.1-linux-amd64.tar.gz
         src: jd-0.3.1-linux-amd64/jd
@@ -26,7 +26,13 @@
       - url: https://github.com/y13i/j2y/releases/download/v0.0.8/j2y-linux_amd64.zip
         src: j2y
         bin: j2y
-
+      - url: https://raw.githubusercontent.com/harelba/q/1.6.3/bin/q
+        src: q
+        bin: q
+        archived: false
+      - url: https://github.com/sharkdp/fd/releases/download/v4.0.0/fd-v4.0.0-x86_64-linux.tar.gz
+        src: fd-v4.0.0-x86_64-linux/fd
+        bin: fd
 
 - unarchive: src={{ item.url }} dest="{{ lookup('env','HOME') }}/usr/local" remote_src=yes
   when: (item.archived is undefined) or (item.archived)
