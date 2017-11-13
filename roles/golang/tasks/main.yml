@@ -25,6 +25,9 @@
     - github.com/nsf/gocode
     - github.com/Masterminds/glide
     - github.com/rogpeppe/godef
+    - github.com/motemen/gobump/cmd/gobump
+    - github.com/tcnksm/ghr
+    - github.com/laher/goxc
 
 - name: go get development tool
   shell: go get {{ item }}
