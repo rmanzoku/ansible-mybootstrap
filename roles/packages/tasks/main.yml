@@ -9,3 +9,11 @@
     repo: git@github.com:{{ my_github_account }}/scripts.git
     dest: "{{ lookup('env','HOME') }}/src/github.com/{{ my_github_account }}/scripts"
     version: master
+
+- name: Clone scripts from URL
+  get_url:
+    url: "{{ item }}"
+    dest: "{{ lookup('env','HOME') }}/usr/local/bin/"
+    mode: 0755
+  with_items:
+    - https://raw.githubusercontent.com/jamesmishra/mysqldump-to-csv/master/mysqldump_to_csv.py
