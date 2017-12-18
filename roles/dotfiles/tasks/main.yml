@@ -33,6 +33,7 @@
     - ".dircolors"
     - ".my.cnf"
     - ".jupyter/jupyter_notebook_config.py"
+    - ".textlintrc"
 
 - name: Make dir for zsh setting
   file:

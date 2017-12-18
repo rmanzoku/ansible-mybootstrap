@@ -1,5 +1,5 @@
 - set_fact:
-    NODE_VERSION: 6.11.2
+    NODE_VERSION: 8.9.3
 
 - set_fact:
     name: "node-v{{ NODE_VERSION }}-linux-x64"
@@ -25,7 +25,7 @@
     production: yes
     global: no
     name: "{{ item }}"
-    state: present
+    state: latest
     path: "{{ lookup('env','HOME') }}/usr/local"
   with_items:
     - eslint
@@ -33,4 +33,20 @@
     - eslint-config-airbnb-base
     - npm-check-updates
     - yarn
+    - textlint
+    - textlint-rule-preset-ja-technical-writing
+    - prh
+    - textlint-rule-prh
 
+- name: Create textlint dir
+  file:
+    state: directory
+    path: "{{ lookup('env','HOME') }}/usr/local/textlint/rules"
+
+- name: download prh rules
+  get_url:
+    url: "{{ item }}"
+    dest: "{{ lookup('env','HOME') }}/usr/local/textlint/rules"
+  with_items:
+    - "https://raw.githubusercontent.com/prh/rules/master/files/markdown.yml"
+    - "https://raw.githubusercontent.com/prh/rules/master/media/WEB%2BDB_PRESS.yml"
