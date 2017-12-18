@@ -49,4 +49,4 @@
     dest: "{{ lookup('env','HOME') }}/usr/local/textlint/rules"
   with_items:
     - "https://raw.githubusercontent.com/prh/rules/master/files/markdown.yml"
-    - "https://raw.githubusercontent.com/prh/rules/master/media/WEB%2BDB_PRESS.yml"
+    - "https://raw.githubusercontent.com/prh/rules/master/media/WEB+DB_PRESS.yml"
