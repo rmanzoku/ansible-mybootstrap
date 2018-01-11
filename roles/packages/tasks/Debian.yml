@@ -3,6 +3,7 @@
     - shellcheck
     - silversearcher-ag
     - emacs
+    - unzip
   become: true
 
 - set_fact:

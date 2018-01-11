@@ -16,7 +16,7 @@
   when: ansible_os_family == "Darwin"
 
 - name: go get development tool
-  shell: go get {{ item }}
+  shell: "{{ lookup('env','HOME') }}/usr/local/go/bin/go get {{ item }}"
   environment:
     GOPATH: "{{ lookup('env','HOME') }}/usr/local"
   with_items:
@@ -30,7 +30,7 @@
     - github.com/laher/goxc
 
 - name: go get development tool
-  shell: go get {{ item }}
+  shell: "{{ lookup('env','HOME') }}/usr/local/go/bin/go get {{ item }}"
   environment:
     GOPATH: "{{ lookup('env','HOME') }}/usr/local"
   with_items:
