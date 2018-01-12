@@ -37,6 +37,7 @@
     - textlint-rule-preset-ja-technical-writing
     - prh
     - textlint-rule-prh
+    - textlint-rule-spellcheck-tech-word
 
 - name: Create textlint dir
   file:
