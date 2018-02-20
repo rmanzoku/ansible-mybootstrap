@@ -1,18 +1,22 @@
-- set_fact:
+- name: set go version
+  set_fact:
     GO_VERSION: 1.9
 
-- set_fact:
+- name: set go uri for Debian
+  set_fact:
     url: "https://storage.googleapis.com/golang/go{{ GO_VERSION }}.linux-amd64.tar.gz"
   when: ansible_os_family == "Debian"
 
-- name: Install from {{ url }}
+- name: install from go bin for Debian
   unarchive: src={{ url }} dest="{{ lookup('env','HOME') }}/usr/local" remote_src=yes
   when: ansible_os_family == "Debian"
 
-- homebrew: name=go state=present
+- name: install from go bin for Darwin
+  homebrew: name=go state=present
   when: ansible_os_family == "Darwin"
 
-- file: state=link src=/usr/local/opt/go/libexec dest="{{ lookup('env','HOME') }}/usr/local/go"
+- name: set link go bin for Darwin
+  file: state=link src=/usr/local/opt/go/libexec dest="{{ lookup('env','HOME') }}/usr/local/go"
   when: ansible_os_family == "Darwin"
 
 - name: go get development tool

@@ -1,6 +1,5 @@
-- debug: var=ansible_os_family
-
-- file: path="{{ lookup('env','HOME') }}/usr/local/bin" state=directory
+- name: create my bin dir
+  file: path="{{ lookup('env','HOME') }}/usr/local/bin" state=directory
 
 - include_tasks: "{{ ansible_os_family }}.yml"
 

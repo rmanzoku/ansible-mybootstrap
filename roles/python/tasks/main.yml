@@ -1,8 +1,9 @@
-- name: Clone pyenv
+- name: clone pyenv
   git:
     repo: git@github.com:yyuu/pyenv.git
     dest: ~/.pyenv
     version: master
 
-- file: state=link src="{{ lookup('env','HOME') }}/.config/pip" dest="{{ lookup('env','HOME') }}/Library/Application Support/pip"
+- name: Set pip config link to Library path when Darwin
+  file: state=link src="{{ lookup('env','HOME') }}/.config/pip" dest="{{ lookup('env','HOME') }}/Library/Application Support/pip"
   when: ansible_os_family == "Darwin"
