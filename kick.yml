@@ -1,0 +1,28 @@
+- hosts: remote
+  user: ubuntu
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: Add zsh
+      apt:
+        name: zsh
+
+    - name: Create user
+      user:
+        name: "{{ my_github_account }}"
+        shell: "/usr/bin/zsh"
+
+    - name: Set authorized key took from github
+      authorized_key:
+        user: "{{ my_github_account }}"
+        state: present
+        key: "{{ 'https://github.com/' + my_github_account + '.keys' }}"
+
+    - name: sudoers
+      copy:
+        dest: /etc/sudoers.d/become
+        owner: root
+        group: root
+        mode: 0644
+        content: |
+           {{ my_github_account }} ALL=(ALL) NOPASSWD:ALL
