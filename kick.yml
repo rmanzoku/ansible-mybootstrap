@@ -3,9 +3,19 @@
   become: yes
   gather_facts: no
   tasks:
-    - name: Add zsh
+    - name: Add packages
       apt:
-        name: zsh
+        name: "{{ item }}"
+        update_cache: yes
+      with_items:
+        - zsh
+        - libssl-dev
+        - python3-pip
+
+    - name: Add ansible
+      pip:
+        executable: pip3
+        name: ansible
 
     - name: Create user
       user:
