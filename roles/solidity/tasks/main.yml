@@ -1,0 +1,10 @@
+---
+- name: add tap ethereum/ethereum
+  homebrew_tap:
+    name: ethereum/ethereum
+    state: present
+  when: ansible_os_family == "Darwin"
+
+- name: install from solidity bin for Darwin
+  homebrew: name=solidity state=present
+  when: ansible_os_family == "Darwin"

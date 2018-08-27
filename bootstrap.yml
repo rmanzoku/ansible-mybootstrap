@@ -7,3 +7,4 @@
     - { tags: node, role: nodejs }
     - python
     - { tags: r, role: ruby }
+    - { tags: s, role: solidity }
