@@ -54,6 +54,7 @@
     - ghq
     - direnv
     - gnu-tar
+    - protobuf
 
 - homebrew_cask:
     state: present
