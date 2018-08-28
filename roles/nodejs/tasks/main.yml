@@ -1,6 +1,6 @@
 - name: set node version
   set_fact:
-    NODE_VERSION: 8.9.3
+    NODE_VERSION: 8.11.3
 
 - name: set node file name for Debian
   set_fact:
