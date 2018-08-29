@@ -25,6 +25,8 @@
     GOPATH: "{{ lookup('env','HOME') }}/usr/local"
   with_items:
     - golang.org/x/tools/cmd/goimports
+    - github.com/pwaller/goimports-update-ignore
+    - github.com/monochromegane/dragon-imports/cmd/dragon-imports
     - github.com/golang/lint/golint
     - github.com/mdempsky/gocode
     - github.com/Masterminds/glide
