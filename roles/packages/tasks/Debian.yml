@@ -34,6 +34,9 @@
       - url: https://github.com/sharkdp/fd/releases/download/v4.0.0/fd-v4.0.0-x86_64-linux.tar.gz
         src: fd-v4.0.0-x86_64-linux/fd
         bin: fd
+      - url: https://github.com/noborus/trdsql/releases/download/v0.4.1/trdsql_linux_amd64.zip
+        src: trdsql_linux_amd64/trdsql
+        bin: trdsql
 
 - unarchive: src={{ item.url }} dest="{{ lookup('env','HOME') }}/usr/local" remote_src=yes
   when: (item.archived is undefined) or (item.archived)

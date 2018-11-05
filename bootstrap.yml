@@ -4,7 +4,7 @@
     - { tags: p, role: packages }
     - { tags: d, role: dotfiles }
     - { tags: [g,go,golang], role: golang }
-    # - { tags: node, role: nodejs }
+    - { tags: node, role: nodejs }
     - python
     - { tags: r, role: ruby }
     - { tags: s, role: solidity }

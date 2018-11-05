@@ -35,6 +35,9 @@
     - eslint
     - eslint-plugin-import
     - eslint-config-airbnb-base
+    - eslint-plugin-vue
+    - eslint-plugin-prettier
+    - prettier
     - npm-check-updates
     - yarn
     - textlint
