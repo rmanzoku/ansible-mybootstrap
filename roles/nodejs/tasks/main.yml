@@ -1,57 +1,12 @@
-- name: set node version
-  set_fact:
-    NODE_VERSION: 8.11.3
+---
+- name: Clone ndenv
+  git:
+    repo: git@github.com:riywo/ndenv.git
+    dest: "{{ lookup('env','HOME') }}/.ndenv"
+    version: master
 
-- name: set node file name for Debian
-  set_fact:
-    name: "node-v{{ NODE_VERSION }}-linux-x64"
-  when: ansible_os_family == "Debian"
-
-- name: set node file name for Darwin
-  set_fact:
-    name: "node-v{{ NODE_VERSION }}-darwin-x64"
-  when: ansible_os_family == "Darwin"
-
-- name: build node uri
-  set_fact:
-    url: "http://nodejs.org/dist/v{{ NODE_VERSION }}/{{ name }}.tar.gz"
-
-- name: install from {{ url }}
-  unarchive: src={{ url }} dest="{{ lookup('env','HOME') }}/usr/local" remote_src=yes
-  register: result
-
-- name: set link "{{ lookup('env','HOME') }}/usr/local/node" -> "{{ lookup('env','HOME') }}/usr/local/{{ name }}"
-  file: state=link src="{{ lookup('env','HOME') }}/usr/local/{{ name }}" dest="{{ lookup('env','HOME') }}/usr/local/node"
-
-- name: npm install dev commands
-  npm:
-    executable: "{{ lookup('env','HOME') }}/usr/local/node/bin/node {{ lookup('env','HOME') }}/usr/local/node/bin/npm"
-    production: yes
-    global: no
-    name: "{{ item }}"
-    state: latest
-    path: "{{ lookup('env','HOME') }}/usr/local"
-  with_items:
-    - eslint
-    - eslint-plugin-import
-    - eslint-config-airbnb-base
-    - npm-check-updates
-    - yarn
-    - textlint
-    - textlint-rule-preset-ja-technical-writing
-    - prh
-    - textlint-rule-prh
-    - textlint-rule-spellcheck-tech-word
-
-- name: create textlint dir
-  file:
-    state: directory
-    path: "{{ lookup('env','HOME') }}/usr/local/textlint/rules"
-
-- name: download prh rules
-  get_url:
-    url: "{{ item }}"
-    dest: "{{ lookup('env','HOME') }}/usr/local/textlint/rules"
-  with_items:
-    - "https://raw.githubusercontent.com/prh/rules/master/files/markdown.yml"
-    - "https://raw.githubusercontent.com/prh/rules/master/media/WEB+DB_PRESS.yml"
+- name: Clone node-build
+  git:
+    repo: git@github.com:riywo/node-build.git
+    dest: "{{ lookup('env','HOME') }}/.ndenv/plugins/node-build"
+    version: master
