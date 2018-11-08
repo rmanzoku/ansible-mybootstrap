@@ -34,6 +34,7 @@
     - github.com/motemen/gobump/cmd/gobump
     - github.com/tcnksm/ghr
     - github.com/laher/goxc
+    - github.com/izumin5210/gex/cmd/gex
 
 - name: go get development tool
   shell: "{{ lookup('env','HOME') }}/usr/local/go/bin/go get {{ item }}"
