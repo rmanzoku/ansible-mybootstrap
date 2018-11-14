@@ -37,6 +37,9 @@
       - url: https://github.com/noborus/trdsql/releases/download/v0.4.1/trdsql_linux_amd64.zip
         src: trdsql_linux_amd64/trdsql
         bin: trdsql
+      - url: https://downloads.rclone.org/v1.44/rclone-v1.44-linux-amd64.zip
+        src: rclone-v1.44-linux-amd64/rclone
+        bin: rclone
 
 - unarchive: src={{ item.url }} dest="{{ lookup('env','HOME') }}/usr/local" remote_src=yes
   when: (item.archived is undefined) or (item.archived)

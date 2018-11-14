@@ -15,10 +15,6 @@
 - name: install from go bin
   unarchive: src={{ url }} dest="{{ lookup('env','HOME') }}/usr/local" remote_src=yes
 
-# - name: set link go bin for Darwin
-#   file: state=link src=/usr/local/opt/go/libexec dest="{{ lookup('env','HOME') }}/usr/local/go"
-#   when: ansible_os_family == "Darwin"
-
 - name: go get development tool
   shell: "{{ lookup('env','HOME') }}/usr/local/go/bin/go get {{ item }}"
   environment:

@@ -1,12 +1,4 @@
-# - name: Change /usr/local owner to "{{ ansible_user_id }}"
-#   become: true
-#   become_method: sudo
-#   file:
-#     dest: /usr/local
-#     owner: "{{ ansible_user_id }}"
-#     group: admin
-#     recurse: yes
-
+---
 - name: brew taps
   homebrew_tap: name={{ item }}
   with_items:
@@ -55,6 +47,7 @@
     - direnv
     - gnu-tar
     - protobuf
+    - rclone
 
 - homebrew_cask:
     state: present
