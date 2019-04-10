@@ -1,18 +1,23 @@
 ---
-- name: Clone ndenv
+- name: Remove ndenv
+  file:
+    state: absent
+    path: "{{ lookup('env','HOME') }}/.ndenv"
+
+- name: Clone nodenv
   git:
-    repo: git@github.com:riywo/ndenv.git
-    dest: "{{ lookup('env','HOME') }}/.ndenv"
+    repo: git@github.com:nodenv/nodenv.git
+    dest: "{{ lookup('env','HOME') }}/.nodenv"
     version: master
 
 - name: Clone node-build
   git:
-    repo: git@github.com:riywo/node-build.git
-    dest: "{{ lookup('env','HOME') }}/.ndenv/plugins/node-build"
+    repo: git@github.com:nodenv/node-build.git
+    dest: "{{ lookup('env','HOME') }}/.nodenv/plugins/node-build"
     version: master
 
-- name: Clone node-build
+- name: Clone nodenv-yarn-install
   git:
-    repo: git@github.com:pine/ndenv-yarn-install.git
-    dest: "{{ lookup('env','HOME') }}/.ndenv/plugins/ndenv-yarn-install"
+    repo: git@github.com:pine/nodenv-yarn-install.git
+    dest: "{{ lookup('env','HOME') }}/.nodenv/plugins/nodenv-yarn-install"
     version: master

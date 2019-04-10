@@ -1,7 +1,8 @@
+---
 - name: clone pyenv
   git:
-    repo: git@github.com:yyuu/pyenv.git
-    dest: ~/.pyenv
+    repo: git@github.com:pyenv/pyenv.git
+    dest: "{{ lookup('env','HOME') }}/.pyenv"
     version: master
 
 - name: Set pip config link to Library path when Darwin
