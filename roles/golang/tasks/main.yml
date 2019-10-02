@@ -1,6 +1,6 @@
 - name: set go version
   set_fact:
-    GO_VERSION: "1.11.2"
+    GO_VERSION: "1.13.1"
 
 - name: set go uri for Debian
   set_fact:
