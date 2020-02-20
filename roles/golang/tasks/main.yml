@@ -1,6 +1,6 @@
 - name: set go version
   set_fact:
-    GO_VERSION: "1.13.5"
+    GO_VERSION: "1.13.7"
 
 - name: set go uri for Debian
   set_fact:
@@ -23,7 +23,7 @@
     - golang.org/x/tools/cmd/goimports
     - github.com/pwaller/goimports-update-ignore
     - github.com/monochromegane/dragon-imports/cmd/dragon-imports
-    - github.com/golang/lint/golint
+    - golang.org/x/lint/golint
     - github.com/mdempsky/gocode
     - github.com/Masterminds/glide
     - github.com/rogpeppe/godef
