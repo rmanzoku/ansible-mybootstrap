@@ -10,6 +10,7 @@
     path: "{{ lookup('env','HOME') }}/{{ item }}"
   with_items:
     - .config
+    - .config/direnv
     - .bak.emacs
     - .emacs.d
     - .jupyter
@@ -23,6 +24,7 @@
     - ".share"
     - ".config/flake8"
     - ".config/pip"
+    - ".config/direnv/direnvrc"
     - ".gitconfig"
     - ".zshrc"
     - ".zsh.d"
