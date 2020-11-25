@@ -18,6 +18,18 @@
         version: v1.3.0
         cmd: cmd/gh
         bin: gh
+      - repo: github.com/cli/cli
+        version: v1.3.0
+        cmd: cmd/gh
+        bin: gh
+      - repo: github.com/golangci/golangci-lint
+        version: v1.33.0
+        cmd: cmd/golangci-lint
+        bin: golangci-lint
+      - repo: github.com/golang/tools
+        version: gopls/v0.5.3
+        cmd: gopls
+        bin: gopls
 
 - name: clone tool sources
   git:
@@ -39,6 +51,6 @@
     cmd: "{{ lookup('env','HOME') }}/usr/local/go/bin/go install"
     chdir: "{{ lookup('env','HOME') }}/src/{{ item.item.repo }}/{{ item.item.cmd }}"
   environment:
-    GOBIN: "{{ lookup('env','HOME') }}/usr/local/bin"
+    GOBIN: "{{ lookup('env','HOME') }}/bin"
   when: not item.stat.exists
   with_items: "{{ existence.results }}"
