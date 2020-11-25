@@ -1,10 +1,14 @@
-- set_fact:
+- name: set arch to amd64
+  set_fact:
     arch: "amd64"
-    when: ansible_architecture == "x86_64"
+    arch2: "amd64"
+  when: ansible_architecture == "x86_64"
 
-- set_fact:
+- name: set arch to arm64
+  set_fact:
     arch: "arm64"
-    when: ansible_architecture == "aarch64"
+    arch2: "arm"
+  when: ansible_architecture == "aarch64"
 
 - apt: name={{ item }} state=present
   with_items:
@@ -27,8 +31,8 @@
       # - url: https://github.com/tidwall/jd/releases/download/0.3.1/jd-0.3.1-linux-amd64.tar.gz
       #   src: jd-0.3.1-linux-amd64/jd
       #   bin: jd
-      - url: "https://github.com/direnv/direnv/releases/download/v2.24.0/direnv.linux-arm"
-        src: "direnv.linux-arm"
+      - url: "https://github.com/direnv/direnv/releases/download/v2.24.0/direnv.linux-{{ arch2 }}"
+        src: "direnv.linux-{{ arch2 }}"
         bin: direnv
         archived: false
       # - url: https://github.com/y13i/j2y/releases/download/v0.0.8/j2y-linux_amd64.zip

@@ -1,10 +1,21 @@
+---
+- name: set arch to amd64
+  set_fact:
+    arch: "amd64"
+  when: ansible_architecture == "x86_64"
+
+- name: set arch to arm64
+  set_fact:
+    arch: "arm64"
+  when: ansible_architecture == "aarch64"
+
 - name: set go version
   set_fact:
-    GO_VERSION: "1.13.10"
+    GO_VERSION: "1.15.5"
 
 - name: set go uri for Debian
   set_fact:
-    url: "https://dl.google.com/go/go{{ GO_VERSION }}.linux-amd64.tar.gz"
+    url: "https://dl.google.com/go/go{{ GO_VERSION }}.linux-{{ arch }}.tar.gz"
   when: ansible_os_family == "Debian"
 
 - name: set go uri for Debian
@@ -20,21 +31,22 @@
   environment:
     GOPATH: "{{ lookup('env','HOME') }}/usr/local"
   with_items:
-    - golang.org/x/tools/cmd/goimports
-    - github.com/pwaller/goimports-update-ignore
-    - github.com/monochromegane/dragon-imports/cmd/dragon-imports
-    - golang.org/x/lint/golint
-    - github.com/mdempsky/gocode
-    - github.com/Masterminds/glide
-    - github.com/rogpeppe/godef
-    - github.com/motemen/gobump/cmd/gobump
-    - github.com/tcnksm/ghr
-    - github.com/laher/goxc
-    - github.com/izumin5210/gex/cmd/gex
+    - github.com/x-motemen/ghq
+    # - golang.org/x/tools/cmd/goimports
+    # - github.com/pwaller/goimports-update-ignore
+    # - github.com/monochromegane/dragon-imports/cmd/dragon-imports
+    # - golang.org/x/lint/golint
+    # - github.com/mdempsky/gocode
+    # - github.com/Masterminds/glide
+    # - github.com/rogpeppe/godef
+    # - github.com/motemen/gobump/cmd/gobump
+    # - github.com/tcnksm/ghr
+    # - github.com/laher/goxc
+    # - github.com/izumin5210/gex/cmd/gex
 
-- name: go get development tool
-  shell: "{{ lookup('env','HOME') }}/usr/local/go/bin/go get {{ item }}"
-  environment:
-    GOPATH: "{{ lookup('env','HOME') }}/usr/local"
-  with_items:
-    - github.com/ariarijp/crontoc
+# - name: go get development tool
+#   shell: "{{ lookup('env','HOME') }}/usr/local/go/bin/go get {{ item }}"
+#   environment:
+#     GOPATH: "{{ lookup('env','HOME') }}/usr/local"
+#   with_items:
+#     - github.com/ariarijp/crontoc
