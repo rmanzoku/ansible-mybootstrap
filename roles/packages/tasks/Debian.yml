@@ -15,6 +15,9 @@
 
 - set_fact:
     from_url:
+      - url: "https://github.com/cli/cli/releases/download/v1.3.0/gh_1.3.0_linux_{{ arch }}.tar.gz"
+        src: "gh_1.3.0_linux_{{ arch }}/bin/gh"
+        bin: gh
       - url: "https://github.com/peco/peco/releases/download/v0.5.8/peco_linux_{{ arch }}.tar.gz"
         src: "peco_linux_{{ arch }}/peco"
         bin: peco
