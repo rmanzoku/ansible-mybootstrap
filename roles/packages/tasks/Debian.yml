@@ -10,11 +10,11 @@
     arch2: "arm"
   when: ansible_architecture == "aarch64"
 
-- apt: name={{ item }} state=present
-  with_items:
-    - silversearcher-ag
-    - emacs
-    - unzip
+- apt:
+    name:
+      - silversearcher-ag
+      - emacs
+      - unzip
   become: true
 
 - set_fact:

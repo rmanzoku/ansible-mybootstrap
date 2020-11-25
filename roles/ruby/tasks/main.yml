@@ -2,35 +2,35 @@
 
 # https://github.com/rbenv/ruby-build/wiki
 - name: Install rbenv dependencies for Debian
-  apt: name={{ item }}
-  with_items:
-    - gcc
-    - autoconf
-    - bison
-    - build-essential
-    - libssl-dev
-    - libyaml-dev
-    - libreadline6-dev
-    - zlib1g-dev
-    - libncurses5-dev
-    - libffi-dev
-    - libgdbm3
-    - libgdbm-dev
+  apt:
+    name:
+      - gcc
+      - autoconf
+      - bison
+      - build-essential
+      - libssl-dev
+      - libyaml-dev
+      - libreadline6-dev
+      - zlib1g-dev
+      - libncurses5-dev
+      - libffi-dev
+      - libgdbm6
+      - libgdbm-dev
   when: ansible_os_family == "Debian"
   become: yes
 
 - name: Install rbenv dependencies for RedHat
-  apt: name={{ item }}
-  with_items:
-    - gcc-6
-    - bzip2
-    - openssl-devel
-    - libyaml-devel
-    - libffi-devel
-    - readline-devel
-    - zlib-devel
-    - gdbm-devel
-    - ncurses-devel
+  yum:
+    name:
+      - gcc-6
+      - bzip2
+      - openssl-devel
+      - libyaml-devel
+      - libffi-devel
+      - readline-devel
+      - zlib-devel
+      - gdbm-devel
+      - ncurses-devel
   when: ansible_os_family == "RedHat"
   become: yes
 
