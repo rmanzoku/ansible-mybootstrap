@@ -1,0 +1,44 @@
+---
+- name: set repository and cmd path
+  set_fact:
+    repositories:
+      - repo: github.com/x-motemen/ghq
+        version: v1.1.5
+        cmd: ""
+        bin: ghq
+      - repo: github.com/peco/peco
+        version: v0.5.8
+        cmd: cmd/peco
+        bin: peco
+      - repo: github.com/direnv/direnv
+        version: v2.24.0
+        cmd: ""
+        bin: direnv
+      - repo: github.com/cli/cli
+        version: v1.3.0
+        cmd: cmd/gh
+        bin: gh
+
+- name: clone tool sources
+  git:
+    depth: 1
+    repo: "https://{{ item.repo }}.git"
+    dest: "{{ lookup('env','HOME') }}/src/{{ item.repo }}"
+    version: "{{ item.version }}"
+    update: no
+  with_items: "{{ repositories }}"
+
+- name: check installed
+  stat:
+    path: "{{ lookup('env','HOME') }}/usr/local/bin/{{ item.bin }}"
+  with_items: "{{ repositories }}"
+  register: existence
+
+- name: install
+  shell:
+    cmd: "{{ lookup('env','HOME') }}/usr/local/go/bin/go install"
+    chdir: "{{ lookup('env','HOME') }}/src/{{ item.item.repo }}/{{ item.item.cmd }}"
+  environment:
+    GOBIN: "{{ lookup('env','HOME') }}/usr/local/bin"
+  when: not item.stat.exists
+  with_items: "{{ existence.results }}"

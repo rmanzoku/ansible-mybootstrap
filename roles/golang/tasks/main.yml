@@ -23,30 +23,7 @@
     url: "https://dl.google.com/go/go{{ GO_VERSION }}.darwin-amd64.tar.gz"
   when: ansible_os_family == "Darwin"
 
-- name: install from go bin
-  unarchive: src={{ url }} dest="{{ lookup('env','HOME') }}/usr/local" remote_src=yes
+# - name: install from go bin
+#   unarchive: src={{ url }} dest="{{ lookup('env','HOME') }}/usr/local" remote_src=yes
 
-- name: go get development tool
-  shell: "{{ lookup('env','HOME') }}/usr/local/go/bin/go get {{ item }}"
-  environment:
-    GOPATH: "{{ lookup('env','HOME') }}/usr/local"
-  with_items:
-    - github.com/x-motemen/ghq
-    # - golang.org/x/tools/cmd/goimports
-    # - github.com/pwaller/goimports-update-ignore
-    # - github.com/monochromegane/dragon-imports/cmd/dragon-imports
-    # - golang.org/x/lint/golint
-    # - github.com/mdempsky/gocode
-    # - github.com/Masterminds/glide
-    # - github.com/rogpeppe/godef
-    # - github.com/motemen/gobump/cmd/gobump
-    # - github.com/tcnksm/ghr
-    # - github.com/laher/goxc
-    # - github.com/izumin5210/gex/cmd/gex
-
-# - name: go get development tool
-#   shell: "{{ lookup('env','HOME') }}/usr/local/go/bin/go get {{ item }}"
-#   environment:
-#     GOPATH: "{{ lookup('env','HOME') }}/usr/local"
-#   with_items:
-#     - github.com/ariarijp/crontoc
+- include_tasks: "tools.yml"
