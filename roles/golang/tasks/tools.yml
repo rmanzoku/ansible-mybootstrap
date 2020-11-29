@@ -18,10 +18,10 @@
         version: v1.3.0
         cmd: cmd/gh
         bin: gh
-      - repo: github.com/cli/cli
-        version: v1.3.0
-        cmd: cmd/gh
-        bin: gh
+      - repo: github.com/go-acme/lego
+        version: v4.1.3
+        cmd: cmd/lego
+        bin: lego
       - repo: github.com/golangci/golangci-lint
         version: v1.33.0
         cmd: cmd/golangci-lint
