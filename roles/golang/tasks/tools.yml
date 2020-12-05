@@ -30,6 +30,10 @@
         version: gopls/v0.5.3
         cmd: gopls
         bin: gopls
+      - repo: github.com/catatsuy/notify_slack
+        version: v0.4.7
+        cmd: cmd/notify_slack
+        bin: notify_slack
 
 - name: clone tool sources
   git:
