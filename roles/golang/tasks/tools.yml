@@ -34,6 +34,10 @@
         version: v0.4.7
         cmd: cmd/notify_slack
         bin: notify_slack
+      - repo: github.com/cosmtrek/air
+        version: v1.15.1
+        cmd: ""
+        bin: air
 
 - name: clone tool sources
   git:
