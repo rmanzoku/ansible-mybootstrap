@@ -38,6 +38,10 @@
         version: v1.15.1
         cmd: ""
         bin: air
+      - repo: github.com/schemalex/schemalex
+        version: v0.1.1
+        cmd: cmd/schemalex
+        bin: schemalex
 
 - name: clone tool sources
   git:
