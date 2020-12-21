@@ -42,7 +42,11 @@
         version: v0.1.1
         cmd: cmd/schemalex
         bin: schemalex
-
+      - repo: github.com/ramya-rao-a/go-outline
+        version: master
+        cmd: ""
+        bin: go-outline
+	
 - name: clone tool sources
   git:
     depth: 1
