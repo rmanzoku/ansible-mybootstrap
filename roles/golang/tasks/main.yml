@@ -1,29 +1,8 @@
 ---
-- name: set arch to amd64
-  set_fact:
-    arch: "amd64"
-  when: ansible_architecture == "x86_64"
+- name: clone goenv
+  git:
+    repo: git@github.com:syndbg/goenv.git
+    dest: "{{ lookup('env','HOME') }}/.goenv"
+    version: master
 
-- name: set arch to arm64
-  set_fact:
-    arch: "arm64"
-  when: ansible_architecture == "aarch64"
-
-- name: set go version
-  set_fact:
-    GO_VERSION: "1.15.5"
-
-- name: set go uri for Debian
-  set_fact:
-    url: "https://dl.google.com/go/go{{ GO_VERSION }}.linux-{{ arch }}.tar.gz"
-  when: ansible_os_family == "Debian"
-
-- name: set go uri for Debian
-  set_fact:
-    url: "https://dl.google.com/go/go{{ GO_VERSION }}.darwin-amd64.tar.gz"
-  when: ansible_os_family == "Darwin"
-
-# - name: install from go bin
-#   unarchive: src={{ url }} dest="{{ lookup('env','HOME') }}/usr/local" remote_src=yes
-
-- include_tasks: "tools.yml"
+# - include_tasks: "tools.yml"
