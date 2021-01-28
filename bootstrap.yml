@@ -5,6 +5,6 @@
     - { tags: d, role: dotfiles }
     - { tags: [g,go,golang], role: golang }
     - { tags: node, role: nodejs }
-    - python
+    - { tags: py, role: python }
     - { tags: r, role: ruby }
     # - { tags: s, role: solidity }
