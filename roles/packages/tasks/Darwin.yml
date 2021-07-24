@@ -2,32 +2,31 @@
 
 - homebrew:
     state: present
-    name: "{{ item }}"
-    install_options: ""
-  with_items:
-    - coreutils
-    - q
-    - jq
-    - wget
-    - shellcheck
-    - peco
-    - packer
-    - ag
-    - jd
-    - percona-toolkit # pt-query-digest
-    - emacs
-    - ghq
-    - direnv
-    - gnu-tar
-    - protobuf
-    - rclone
+    name:
+      - coreutils
+      - q
+      - jq
+      - wget
+      - peco
+      - packer
+      - ag
+      - jd
+      - percona-toolkit # pt-query-digest
+      - emacs
+      - ghq
+      - direnv
+      - gnu-tar
+      - protobuf
+      - rclone
+    #install_options: ""
 
-- homebrew_cask:
-    state: present
-    name: "{{ item.name }}"
-    install_options: "{{ item.option }}"
-  with_items:
-    - { name: firefox, option: "language=ja" }
+
+# - homebrew_cask:
+#     state: present
+#     name: "{{ item.name }}"
+#     install_options: "{{ item.option }}"
+#   with_items:
+#     - { name: firefox, option: "language=ja" }
 
 - file:
     state: link
