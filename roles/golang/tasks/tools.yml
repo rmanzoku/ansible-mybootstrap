@@ -46,7 +46,7 @@
         version: master
         cmd: ""
         bin: go-outline
-	
+
 - name: clone tool sources
   git:
     depth: 1
@@ -64,7 +64,7 @@
 
 - name: install
   shell:
-    cmd: "{{ lookup('env','HOME') }}/usr/local/go/bin/go install"
+    cmd: "go install"
     chdir: "{{ lookup('env','HOME') }}/src/{{ item.item.repo }}/{{ item.item.cmd }}"
   environment:
     GOBIN: "{{ lookup('env','HOME') }}/bin"
